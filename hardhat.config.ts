@@ -1,17 +1,21 @@
 import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox";
+import fs from "fs";
+
+const privateKey: string = fs.readFileSync(".secret").toString();
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.9",
+  solidity: "0.8.4",
   networks: {
     hardhat: {
       chainId: 1337,
     },
     prater: {
-      url: "https://2EkoUjqnRPRCCCEgo4DNqUOsJj0:fa3e9cef46fd2b17cb614708d48040b1@eth2-beacon-prater.infura.io",
+      url: `https://${process.env.PROJECT_ID}:${process.env.API_SECRET}@eth2-beacon-prater.infura.io`,
+      accounts: [privateKey],
     },
     mainnet: {
-      url: "https://2EkoUjqnRPRCCCEgo4DNqUOsJj0:fa3e9cef46fd2b17cb614708d48040b1@eth2-beacon-mainnet.infura.io",
+      url: `https://${process.env.PROJECT_ID}:${process.env.API_SECRET}@eth2-beacon-mainnet.infura.io`,
+      accounts: [privateKey],
     },
   },
 };
