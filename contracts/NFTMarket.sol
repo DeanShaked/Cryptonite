@@ -98,9 +98,9 @@ contract NFTMarket is ReentrancyGuard {
     }
 
     /// @notice This function will fetch all the unsold market items
-    /// @return MarketItemArr is an array of all the unsold market items
+    /// @return unsoldItemsArr is an array of all the unsold market items
     
-    function fetchMarketItems() public view returns(MarketItem[] memory) {
+    function fetchUnsoldItems() public view returns(MarketItem[] memory) {
 
         // Counter of total items created on market
         uint itemCount = _itemIds.current();
@@ -108,28 +108,23 @@ contract NFTMarket is ReentrancyGuard {
         // Counter of total unsold items on market
         uint unsoldItemsCount = _itemIds.current() - _itemsSold.current();
 
-        // unsold items index
+        // Unsold items index
         uint currentIndex = 0;
 
         // Total unsold market items array
-        MarketItem[] memory unsoldItems = new MarketItem[](unsoldItemsCount);
+        MarketItem[] memory unsoldItemsArr = new MarketItem[](unsoldItemsCount);
 
-        // Loop over the items that has been created,
-        // Check if the item is unsold
-        // Create a market item reference
-        // Add the market item reference to the items arr
+        // Find the unsold items and add him to unsoldItemsArr
         for(uint i = 0; i < itemCount ;i++) {
             if(idToMarketItem[i+1].owner == address(0)) {
-
                 uint currentId = idToMarketItem[i+1].itemId;
                 MarketItem storage currentItem = idToMarketItem[currentId];
-                unsoldItems[currentIndex] = currentItem;
-
+                unsoldItemsArr[currentIndex] = currentItem;
                 currentIndex += 1;
             }
         }
         
-        return unsoldItems;
+        return unsoldItemsArr;
     }
 
     /// @notice This function will fetch the NFTs that the user purchased
@@ -137,9 +132,14 @@ contract NFTMarket is ReentrancyGuard {
     
     function fetchItemsPurchased() public view returns(MarketItem[] memory) {
 
+        // Counter of total items created on market
         uint totalItemCount = _itemIds.current();
+
+        // Counter of total items purchased by user
         uint itemCount = 0;
-        uint currentIndex = 0;
+
+        // Purchased items index
+        uint purchasedItemsIndex = 0;
 
         // Find the length of array of items that was purchased by the user
         for(uint i = 0; i < totalItemCount; i++) {
@@ -148,14 +148,16 @@ contract NFTMarket is ReentrancyGuard {
             }
         }
 
+
         MarketItem[] memory purchasedItemsArr = new MarketItem[](itemCount);
 
+        // Find the item created by the user and add him to purchasedItemsArr 
         for(uint i = 0; i < itemCount; i++) {
             if(idToMarketItem[i + 1].owner == msg.sender) {
                 uint currentId = idToMarketItem[i + 1].itemId;
                 MarketItem storage currentItem = idToMarketItem[currentId];
-                purchasedItemsArr[currentIndex] = currentItem;
-                currentIndex += 1;
+                purchasedItemsArr[purchasedItemsIndex] = currentItem;
+                purchasedItemsIndex += 1;
             }
         }
         return purchasedItemsArr;
@@ -166,9 +168,14 @@ contract NFTMarket is ReentrancyGuard {
     
     function fetchItemsCreated() public view returns(MarketItem[] memory) {
 
+        // Counter of total items created on market
         uint totalItemCount = _itemIds.current();
+
+        // Counter of total items created by user
         uint itemCount = 0;
-        uint currentIndex = 0;
+
+        // Created items index
+        uint createdItemsIndex = 0;
 
         // Find the length of array of items that was created by the user
         for(uint i = 0; i < totalItemCount; i++) {
@@ -184,8 +191,8 @@ contract NFTMarket is ReentrancyGuard {
             if(idToMarketItem[i + 1].seller == msg.sender) {
                 uint currentId = idToMarketItem[i + 1].itemId;
                 MarketItem storage currentItem = idToMarketItem[currentId];
-                createdItemsArr[currentIndex] = currentItem;
-                currentIndex += 1;
+                createdItemsArr[createdItemsIndex] = currentItem;
+                createdItemsIndex += 1;
             }
         }
         return createdItemsArr;
@@ -194,11 +201,10 @@ contract NFTMarket is ReentrancyGuard {
 }
 
 /// @dev notes:
-/// - address(0) is an empty address, which in our case means no owners
-/// - address(this) is marketplace smart contract address
-/// - "MarketItem[] memory" is an array that will reset once the function execution ends
-/// - "MarketItem storage" is an object that once you change it it'll update the contract state
-/// - "public view" is mostly used for fetching data functions
-/// - "public payable" is mostly used for payments transfer
-/// - "nonReentrant" is the ReentrancyGuard modifier that controlls the function entrancy state
-/// - 
+/// - address(0) is an empty address, which in our case means no owners.
+/// - address(this) is marketplace smart contract address.
+/// - "MarketItem[] memory" is an array that will reset once the function execution ends.
+/// - "MarketItem storage" is an object that once you change it it'll update the contract state.
+/// - "public view" is mostly used for fetching data functions.
+/// - "public payable" is mostly used for payments transfer.
+/// - "nonReentrant" is the ReentrancyGuard modifier that controlls the function entrancy state.
