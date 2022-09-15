@@ -56,7 +56,7 @@ contract NFTMarket is ReentrancyGuard {
 
         // Update market items indexing
         _itemIds.increment();
-        const itemId = _itemIds.current();
+        uint256 itemId = _itemIds.current();
 
         // Update market items hash map, refering to address as address(0) => empty address => no owners 
         idToMarketItem[itemId] = MarketItem(
@@ -72,7 +72,7 @@ contract NFTMarket is ReentrancyGuard {
         // Transfer NFT ownership to the market contract, which will eventually transfer to the next buyer
         IERC721(nftContract).transferFrom(msg.sender,address(this),tokenId);
 
-        emit MarketItemCreated(itemId, nftContract ,tokenId ,msg.sender ,address(0) ,price ,false);
+        emit MarketItemCreated(itemId, nftContract ,tokenId ,msg.sender ,address(0));
     }
 
     function createMarketSale(address nftContract, uint256 itemId) public payable nonReentrant {
