@@ -1,27 +1,31 @@
 import Link from "next/link";
 import React from "react";
 
-const MarketNavbar = () => {
+const Navbar = () => {
   const navItems = [
     {
       id: "1",
       title: "Home",
       href: "/",
+      value: "Home",
     },
     {
-      id: "1",
-      title: "NFT Marketplace",
+      id: "2",
+      title: "Market",
       href: "/market",
+      value: "NFT Marketplace",
     },
     {
-      id: "1",
+      id: "3",
       title: "Exchange",
       href: "/exchange",
+      value: "Exchange",
     },
     {
-      id: "1",
+      id: "4",
       title: "Cynite DAO",
       href: "/dao",
+      value: "Cynite DAO",
     },
   ];
   return (
@@ -30,7 +34,9 @@ const MarketNavbar = () => {
         {navItems.map((item) => {
           return (
             <Link key={item.id} href={item.href}>
-              <a className="mr-4 text-pink">{item.title}</a>
+              <a className="mr-4 text-pink" title={item.title}>
+                {item.value}
+              </a>
             </Link>
           );
         })}
@@ -39,4 +45,4 @@ const MarketNavbar = () => {
   );
 };
 
-export default MarketNavbar;
+export default Navbar;

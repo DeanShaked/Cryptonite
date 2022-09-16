@@ -1,27 +1,31 @@
 import React from "react";
 import Link from "next/link";
 
-const MainNavbar = () => {
+const Header = () => {
   const navItems = [
     {
-      id: "1",
+      id: 1,
       title: "Home",
       href: "/",
+      value: "Home",
     },
     {
-      id: "1",
-      title: "NFT Marketplace",
+      id: 2,
+      title: "Market",
       href: "/market",
+      value: "NFT Marketplace",
     },
     {
-      id: "1",
+      id: "3",
       title: "Exchange",
       href: "/exchange",
+      value: "Exchange",
     },
     {
-      id: "1",
-      title: "Cynite DAO",
+      id: 4,
+      title: "DAO",
       href: "/dao",
+      value: "Cynite DAO",
     },
   ];
   return (
@@ -31,7 +35,9 @@ const MainNavbar = () => {
         {navItems.map((item) => {
           return (
             <Link key={item.id} href={item.href}>
-              <a className="mr-4 text-pink">{item.title}</a>
+              <a className="mr-4 text-pink" title={item.title}>
+                {item.value}
+              </a>
             </Link>
           );
         })}
@@ -40,4 +46,4 @@ const MainNavbar = () => {
   );
 };
 
-export default MainNavbar;
+export default Header;
