@@ -1,31 +1,31 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
 
 const Navbar = () => {
   const navItems = [
     {
-      id: "1",
-      title: "Home",
-      href: "/",
-      value: "Home",
+      id: '1',
+      title: 'Home',
+      href: '/',
+      value: 'Home',
     },
     {
-      id: "2",
-      title: "Market",
-      href: "/market",
-      value: "NFT Marketplace",
+      id: '2',
+      title: 'Market',
+      href: '/market',
+      value: 'NFT Marketplace',
     },
     {
-      id: "3",
-      title: "Exchange",
-      href: "/exchange",
-      value: "Exchange",
+      id: '3',
+      title: 'Exchange',
+      href: '/exchange',
+      value: 'Exchange',
     },
     {
-      id: "4",
-      title: "Cynite DAO",
-      href: "/dao",
-      value: "Cynite DAO",
+      id: '4',
+      title: 'Cynite DAO',
+      href: '/dao',
+      value: 'Cynite DAO',
     },
   ];
   return (

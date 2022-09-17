@@ -1,11 +1,11 @@
-import { HardhatUserConfig } from "hardhat/config";
+import { HardhatUserConfig } from 'hardhat/config';
 
 const projectId: string | undefined = process.env.NEXT_PUBLIC_PROJECT_ID;
 const apiSecret: string | undefined = process.env.NEXT_PUBLIC_API_SECRET;
 const privateKey: string = process.env.NEXT_PUBLIC_PRIVATE_KEY;
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.4",
+  solidity: '0.8.4',
   networks: {
     hardhat: {
       chainId: 1337,

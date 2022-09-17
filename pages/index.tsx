@@ -1,9 +1,9 @@
 // App
-import type { NextPage } from "next";
-import Head from "next/head";
+import type { NextPage } from 'next';
+import Head from 'next/head';
 
 // Components
-import RootLayout from "../app/layout";
+import RootLayout from '../app/layout';
 
 const Home: NextPage = () => {
   return (
