@@ -1,7 +1,7 @@
 import { HardhatUserConfig } from 'hardhat/config';
 
-const projectId: string | undefined = process.env.NEXT_PUBLIC_PROJECT_ID;
-const apiSecret: string | undefined = process.env.NEXT_PUBLIC_API_SECRET;
+const projectId: string = process.env.NEXT_PUBLIC_PROJECT_ID;
+const apiSecret: string = process.env.NEXT_PUBLIC_API_SECRET;
 const privateKey: string = process.env.NEXT_PUBLIC_PRIVATE_KEY;
 
 const config: HardhatUserConfig = {
