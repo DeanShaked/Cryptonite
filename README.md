@@ -32,7 +32,7 @@ yarn add ethers hardhat @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclab
 
 ## Install dev dependencies
 ```bash
-yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest prettier
+yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest prettier @commitlint/config-conventional @commitlint/cli
 ```
 ## Tailwind
 ```bash
@@ -77,4 +77,18 @@ Create pre-push hook
 npx husky add .husky/pre-push "yarn build"
 ````
 
+## Commitlint
+
+Enable Commitlint via Husky
+```bash
+npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+````
+
+
+
+
+## Available scripts
+### Linting - `yarn lint`
+### Prepare - `yarn prepare`
+### Prettify - `yarn prettier`
 
