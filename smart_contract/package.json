@@ -1,0 +1,17 @@
+{
+  "name": "smart_contract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "deploy.ts",
+  "engines": {
+    "node": ">=14.0.0",
+    "yarn": ">=1.22.0",
+    "npm": "please-install-yarn"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

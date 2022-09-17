@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CreateNFT = (props) => {
+const CreateNFT = () => {
   return <div>CreateNFT</div>;
 };
 

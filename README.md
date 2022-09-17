@@ -1,20 +1,28 @@
 # Welcome Cryptonite Ecosystem
 
 ## Main Features
-- [x] NFT Market place
+- [ ] NFT Market place
 - [ ] DeFi Exchange
 - [ ] DAO Governance
+
+## Tech stack
+`NextJS` , `Typescript` , `Tailwindcss` , `Solidity`
+
+## Experimental practices
+`React 18.0` , `Layout RFC` 
 
 ## Engine lock
 
 `use yarn only` \
 `node >=14.0.0` \
-`yarn >=1.22.0`
+`yarn >=1.22.0` 
+
+#  Frontend
 
 ## Create Next App
 
 ```bash
-yarn create next-app [app_name] --typescript
+yarn create next-app frontend --typescript
 ```
 
 ## Install dependencies

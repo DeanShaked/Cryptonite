@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MarketLayout = (props) => {
+const MarketLayout = () => {
   return <div>MarketLayout</div>;
 };
 
