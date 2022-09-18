@@ -5,8 +5,7 @@ import React from 'react';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 
-const RootLayout = (props: any) => {
-  const { children } = props;
+const RootLayout = () => {
   return (
     <>
       <Header />
