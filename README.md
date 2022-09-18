@@ -1,15 +1,16 @@
-# Welcome Cryptonite Ecosystem
+# Welcome to Cryptonite Ecosystem
 
 ## Main Features
-- [ ] NFT Market place
+- [ ] NFT Market place (in progress)
 - [ ] DeFi Exchange
 - [ ] DAO Governance
 
 ## Tech stack
 `NextJS` , `Typescript` , `Tailwindcss` , `Solidity`
 
-## Experimental practices
-`React 18.0` , `Layout RFC` 
+## Libraries
+`ethers` , `hardhat` , `openzeppelin` , `ipfs-http-client` , `commitlint` \
+`prettier` , `husky` 
 
 ## Engine lock
 
