@@ -1,5 +1,7 @@
+// App
 import React from 'react';
-import Link from 'next/link';
+
+// Components
 import Navbar from '../../Navbar/Navbar';
 
 const Header = () => {
