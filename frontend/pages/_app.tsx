@@ -1,5 +1,5 @@
 // App
-import { AppProps } from 'next/app';
+import type { AppProps } from 'next/app';
 
 // Components
 import Header from '../components/layout/Header/Header';
@@ -7,11 +7,23 @@ import Header from '../components/layout/Header/Header';
 // Styles
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
+type ComponentWithPageLayout = AppProps & {
+  Component: AppProps['Component'] & {
+    PageLayout?: React.ComponentType;
+  };
+};
+
+function MyApp({ Component, pageProps }: ComponentWithPageLayout) {
   return (
     <div>
       <Header />
-      <Component {...pageProps} />
+      {Component.PageLayout ? (
+        <Component.PageLayout>
+          <Component {...pageProps} />
+        </Component.PageLayout>
+      ) : (
+        <Component {...pageProps} />
+      )}
     </div>
   );
 }

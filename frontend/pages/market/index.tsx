@@ -1,4 +1,8 @@
+// App
 import React from 'react';
+
+// Components
+import { MarketLayout } from '../../components/layout/Market/MarketLayout';
 import Navbar from '../../components/reusable/Navbar/Navbar';
 
 const Market = () => {
@@ -37,5 +41,7 @@ const Market = () => {
     </div>
   );
 };
+
+Market.PageLayout = MarketLayout;
 
 export default Market;
