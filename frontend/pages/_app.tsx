@@ -1,5 +1,7 @@
 // App
 import { AppProps } from 'next/app';
+
+// Components
 import Header from '../components/layout/Header/Header';
 
 // Styles

@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Components
-import Navbar from '../../Navbar/Navbar';
+import Navbar from '../../reusable/Navbar/Navbar';
 
 const Header = () => {
   const navbarItems = {
