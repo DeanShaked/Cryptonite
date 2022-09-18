@@ -29,3 +29,8 @@ function MyApp({ Component, pageProps }: ComponentWithPageLayout) {
 }
 
 export default MyApp;
+
+// @dev notes:
+// - type ComponentWithPageLayout ==> Generic layout warpper for any route and sub-route
+// - If the current rendred component has a PageLayout property,
+//   we will create a page layout for to wrap every component down his subtree
