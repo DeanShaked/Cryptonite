@@ -1,5 +1,6 @@
 // App
 import { AppProps } from 'next/app';
+import Header from '../components/layout/Header/Header';
 
 // Styles
 import '../styles/globals.css';
@@ -7,6 +8,7 @@ import '../styles/globals.css';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div>
+      <Header />
       <Component {...pageProps} />
     </div>
   );
