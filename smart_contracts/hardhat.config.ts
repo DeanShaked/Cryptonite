@@ -7,13 +7,16 @@ const privateKey = process.env.PRIVATE_KEY;
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
+  paths: {
+    artifacts: "../frontend/artifacts/",
+  },
   networks: {
     hardhat: {
       chainId: 1337,
     },
     goerli: {
       url: `https://goerli.infura.io/v3/${projectId}`,
-      accounts: [`0x${privateKey}`],
+      accounts: [`${privateKey}`],
     },
   },
   solidity: {
