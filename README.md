@@ -71,9 +71,30 @@ npx hardhat
 ### Add to `hardhat.config.js`
 
 ```typescript
-const projectId: string = process.env.NEXT_PUBLIC_PROJECT_ID;
-const apiSecret: string = process.env.NEXT_PUBLIC_API_SECRET;
-const privateKey: string = process.env.NEXT_PUBLIC_PRIVATE_KEY;
+const projectId: string | undefined = process.env.projectId;
+const privateKey: string | undefined = process.env.privateKey;
+
+const config: HardhatUserConfig = {
+  defaultNetwork: "hardhat",
+  networks: {
+    hardhat: {
+      chainId: 1337,
+    },
+    goerli: {
+      url: `https://goerli.infura.io/v3/${projectId}`,
+      accounts: [privateKey],
+    },
+  },
+  solidity: {
+    version: "0.8.4",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
+};
 ```
 
 ## Husky
