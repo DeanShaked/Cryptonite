@@ -1,6 +1,5 @@
 // App
 import type { NextPage } from 'next';
-import Market from './market';
 
 const Home: NextPage = () => {
   return (

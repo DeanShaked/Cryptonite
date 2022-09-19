@@ -1,5 +1,6 @@
 // App
 import type { AppProps } from 'next/app';
+import Footer from '../components/layout/Footer/Footer';
 
 // Components
 import Header from '../components/layout/Header/Header';
@@ -15,16 +16,19 @@ type ComponentWithPageLayout = AppProps & {
 
 function MyApp({ Component, pageProps }: ComponentWithPageLayout) {
   return (
-    <div>
+    <>
       <Header />
-      {Component.PageLayout ? (
-        <Component.PageLayout>
+      <main>
+        {Component.PageLayout ? (
+          <Component.PageLayout>
+            <Component {...pageProps} />
+          </Component.PageLayout>
+        ) : (
           <Component {...pageProps} />
-        </Component.PageLayout>
-      ) : (
-        <Component {...pageProps} />
-      )}
-    </div>
+        )}
+      </main>
+      <Footer />
+    </>
   );
 }
 
@@ -33,4 +37,5 @@ export default MyApp;
 // @dev notes:
 // - type ComponentWithPageLayout ==> Generic layout warpper for any route and sub-route
 // - If the current rendred component has a PageLayout property,
-//   we will create a page layout for to wrap every component down his subtree
+//   we will render this component as children inside his layout component
+//   for example: [page_component_name].PageLayout = [layout_component_name]
