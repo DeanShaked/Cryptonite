@@ -1,6 +1,6 @@
 import { INavbar } from './Navbar';
 
-const base: INavbar = {
+const header: INavbar = {
   items: [
     {
       id: 1,
@@ -29,6 +29,36 @@ const base: INavbar = {
   ],
 };
 
+const market_header: INavbar = {
+  items: [
+    {
+      id: 1,
+      title: 'home',
+      href: '/market/',
+      value: 'Home',
+    },
+    {
+      id: 2,
+      title: 'create-nft',
+      href: '/market/create-nft',
+      value: 'Create NFT',
+    },
+    {
+      id: 3,
+      title: 'dashboard',
+      href: '/market/dashboard',
+      value: 'Dashboard',
+    },
+    {
+      id: 4,
+      title: 'my-assets',
+      href: '/market/my-assets',
+      value: 'My Assets',
+    },
+  ],
+};
+
 export const mockNavbarProps = {
-  base,
+  header,
+  market_header,
 };

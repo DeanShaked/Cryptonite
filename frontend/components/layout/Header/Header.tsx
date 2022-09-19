@@ -3,40 +3,21 @@ import React from 'react';
 
 // Components
 import Navbar from '../../reusable/Navbar/Navbar';
+import { mockNavbarProps } from '../../reusable/Navbar/Navbar.mock';
 
 const Header = () => {
-  const navbarItems = {
-    items: [
-      {
-        id: 1,
-        title: 'Home',
-        href: '/',
-        value: 'Home',
-      },
-      {
-        id: 2,
-        title: 'Market',
-        href: '/market',
-        value: 'NFT Marketplace',
-      },
-      {
-        id: 3,
-        title: 'Exchange',
-        href: '/exchange',
-        value: 'Exchange',
-      },
-      {
-        id: 4,
-        title: 'Cynite DAO',
-        href: '/dao',
-        value: 'Cynite DAO',
-      },
-    ],
-  };
   return (
-    <nav className="border-b-2 p-4">
+    <nav
+      className="          flex flex-wrap
+    items-center
+    justify-between
+    w-full
+    p-4
+    text-lg text-gray-700
+    bg-white"
+    >
       <p className="text-4xl">Cryptonite</p>
-      <Navbar items={navbarItems.items} />
+      <Navbar items={mockNavbarProps.header.items} />
     </nav>
   );
 };

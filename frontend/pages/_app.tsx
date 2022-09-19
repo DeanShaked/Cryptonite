@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: ComponentWithPageLayout) {
   return (
     <>
       <Header />
-      <main>
+      <main className="main-wrapper">
         {Component.PageLayout ? (
           <Component.PageLayout>
             <Component {...pageProps} />

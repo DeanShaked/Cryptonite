@@ -1,38 +1,16 @@
+// Components
 import Navbar from '../../reusable/Navbar/Navbar';
 
+// Mock
+import { mockNavbarProps } from '../../reusable/Navbar/Navbar.mock';
+
 export const MarketLayout = ({ children }: { children: React.ReactNode }) => {
-  const navbarItems = {
-    items: [
-      {
-        id: 1,
-        title: 'home',
-        href: '/market/',
-        value: 'Home',
-      },
-      {
-        id: 2,
-        title: 'create-nft',
-        href: '/market/create-nft',
-        value: 'Create NFT',
-      },
-      {
-        id: 3,
-        title: 'dashboard',
-        href: '/market/dashboard',
-        value: 'Dashboard',
-      },
-      {
-        id: 4,
-        title: 'my-assets',
-        href: '/market/my-assets',
-        value: 'My Assets',
-      },
-    ],
-  };
   return (
-    <>
-      <Navbar items={navbarItems.items} />
+    <div className="flex flex-col">
+      <aside className="flex ">
+        <Navbar items={mockNavbarProps.market_header.items} />
+      </aside>
       <main>{children}</main>
-    </>
+    </div>
   );
 };
