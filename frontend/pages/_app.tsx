@@ -1,41 +1,37 @@
 // App
 import type { AppProps } from 'next/app';
-import Footer from '../components/layout/Footer/Footer';
+
+// Redux
+import { store } from '../store/store';
+import { Provider } from 'react-redux';
 
 // Components
-import Header from '../components/layout/Header/Header';
+import Header from '../components/reusable/Header/Header';
+import Footer from '../components/reusable/Footer/Footer';
 
 // Styles
 import '../styles/globals.css';
 
-type ComponentWithPageLayout = AppProps & {
-  Component: AppProps['Component'] & {
-    PageLayout?: React.ComponentType;
-  };
-};
+// Types
+import { NextPageWithLayout } from './page';
 
-function MyApp({ Component, pageProps }: ComponentWithPageLayout) {
+interface AppPropsWithLayout extends AppProps {
+  Component: NextPageWithLayout;
+}
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout || ((page: NextPageWithLayout) => page);
+
   return (
-    <>
+    <Provider store={store}>
       <Header />
       <main className="main-wrapper">
-        {Component.PageLayout ? (
-          <Component.PageLayout>
-            <Component {...pageProps} />
-          </Component.PageLayout>
-        ) : (
-          <Component {...pageProps} />
-        )}
+        {getLayout(<Component {...pageProps} />)}
       </main>
       <Footer />
-    </>
+    </Provider>
   );
 }
 
 export default MyApp;
-
-// @dev notes:
-// - type ComponentWithPageLayout ==> Generic layout warpper for any route and sub-route
-// - If the current rendred component has a PageLayout property,
-//   we will render this component as children inside his layout component
-//   for example: [page_component_name].PageLayout = [layout_component_name]
