@@ -1,9 +1,21 @@
+// App
 import React from 'react';
-import { MarketLayout } from '../../../components/layout/Market/MarketLayout';
+import { NextPageWithLayout } from '../../page';
 
-const MyAssets = () => {
+// Components
+import MarketLayout from '../../../components/layout/Market/MarketLayout';
+import SidebarLayout from '../../../components/layout/Sidebar/SidebarLayout';
+
+const MyAssets: NextPageWithLayout = () => {
   return <div>MyAssets</div>;
 };
-MyAssets.PageLayout = MarketLayout;
 
+MyAssets.getLayout = (page: NextPageWithLayout) => {
+  return (
+    <MarketLayout>
+      <SidebarLayout />
+      {page}
+    </MarketLayout>
+  );
+};
 export default MyAssets;

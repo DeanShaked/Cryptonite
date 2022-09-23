@@ -2,8 +2,8 @@
 import React from 'react';
 
 // Components
-import Navbar from '../../reusable/Navbar/Navbar';
-import { mockNavbarProps } from '../../reusable/Navbar/Navbar.mock';
+import Navbar from '../Navbar/Navbar';
+import { mockNavbarProps } from '../Navbar/Navbar.mock';
 
 const Header = () => {
   return (
