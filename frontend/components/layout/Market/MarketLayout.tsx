@@ -1,8 +1,10 @@
+import styles from './styles';
+
 export interface IMarketLayout extends React.ComponentPropsWithoutRef<'div'> {}
 
 const MarketLayout: React.FC<IMarketLayout> = ({ children }) => {
   return (
-    <div className="flex flex-col">
+    <div className={styles.marketLayoutContainer}>
       <main>{children}</main>
     </div>
   );

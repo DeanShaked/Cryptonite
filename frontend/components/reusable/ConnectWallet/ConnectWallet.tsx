@@ -2,9 +2,6 @@
 import { ethers } from 'ethers';
 import Web3Modal from 'web3modal';
 
-// Styles
-import styles from '../../../styles/index';
-
 export interface IConnectWallet {}
 
 const ConnectWallet: React.FC<IConnectWallet> = () => {
@@ -27,7 +24,10 @@ const ConnectWallet: React.FC<IConnectWallet> = () => {
 
   return (
     <div>
-      <button className={styles.walletButton} onClick={connectWallet}>
+      <button
+        className="bg-site-pink h-[60px] border-none outline-none font-poppins font-bold text-black-site rounded-2xl hover:bg-pink-600 transition-all"
+        onClick={connectWallet}
+      >
         Connect Wallet
       </button>
     </div>

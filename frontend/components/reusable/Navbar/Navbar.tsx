@@ -1,9 +1,6 @@
 // App
 import Link from 'next/link';
 
-// Styles
-import styles from '../../../styles/index';
-
 type NavBarProps = {
   id: number;
   title: string;
@@ -17,11 +14,14 @@ export interface INavbar {
 
 const Navbar: React.FC<INavbar> = ({ items }) => {
   return (
-    <div className={styles.navbarContainer}>
+    <div className="flex flex-column w-full items-center justify-center">
       {items.map((item) => {
         return (
           <Link key={item.id} href={item.href}>
-            <a className={styles.navbarLink} title={item.title}>
+            <a
+              className="flex flex-row text-dim-white font-medium first:ml-2 last:mr-2 mx-4 "
+              title={item.title}
+            >
               {item.value}
             </a>
           </Link>

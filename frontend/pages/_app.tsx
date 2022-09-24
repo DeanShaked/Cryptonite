@@ -10,7 +10,6 @@ import Footer from '../components/reusable/Footer/Footer';
 import { AppPropsWithLayout, NextPageWithLayout } from './page';
 
 // Styles
-import styles from '../styles';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
@@ -19,15 +18,14 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <Provider store={store}>
-      <div className={styles.container}>
-        <div className={styles.innerContainer}>
-          <Header />
-        </div>
+      <div className="flex flex-col bg-site-black ">
+        <Header />
+
+        <main className="main-wrapper">
+          {getLayout(<Component {...pageProps} />)}
+        </main>
+        <Footer />
       </div>
-      <main className="main-wrapper">
-        {getLayout(<Component {...pageProps} />)}
-      </main>
-      <Footer />
     </Provider>
   );
 }
