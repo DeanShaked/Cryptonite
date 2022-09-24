@@ -22,8 +22,5 @@ export const marketSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchUnsoldNfts.fulfilled]: (state, action: PayloadAction) => {
-      state.unsoledNtfs = action.payload;
-    },
   },
 });

@@ -3,25 +3,32 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface appState {
-  isLoading: boolean | null;
-  isDarkMode: boolean | null;
+  isLoading: boolean;
+  isDarkMode: boolean;
+  isWalletConnected:boolean;
 }
 
 const initialState: appState = {
   isLoading: false,
   isDarkMode: false,
+  isWalletConnected: false,
 };
 
 export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    toggleisLoading(state, action) {
+    toggleLoading(state, action) {
       state.isLoading = !state.isLoading;
     },
-    isDarkMode(state, action) {
+    toggleDarkMode(state, action) {
       state.isDarkMode = !state.isDarkMode;
     },
+    toggleWalletConnected(state, action) {
+      state.isWalletConnected = !state.isWalletConnected;
+    },
   },
-  extraReducers: {},
+  extraReducers: {
+
+  },
 });

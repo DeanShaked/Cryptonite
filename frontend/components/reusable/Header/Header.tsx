@@ -1,5 +1,8 @@
 // App
 import React from 'react';
+import { uniswapLogo } from '../../../assets';
+import styles from '../../../styles';
+import ConnectWallet from '../ConnectWallet/ConnectWallet';
 
 // Components
 import Navbar from '../Navbar/Navbar';
@@ -7,18 +10,15 @@ import { mockNavbarProps } from '../Navbar/Navbar.mock';
 
 const Header = () => {
   return (
-    <nav
-      className="          flex flex-wrap
-    items-center
-    justify-between
-    w-full
-    p-4
-    text-lg text-gray-700
-    bg-white"
-    >
-      <p className="text-4xl">Cryptonite</p>
+    <div className={styles.header}>
+      <img
+        src={`${uniswapLogo}`}
+        alt="uniswap-logo"
+        className="w-16 h-16 object-contain"
+      />
       <Navbar items={mockNavbarProps.header.items} />
-    </nav>
+      <ConnectWallet />
+    </div>
   );
 };
 
