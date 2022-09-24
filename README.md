@@ -123,6 +123,23 @@ Enable Commitlint via Husky
 npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 ```
 
+
+## Exchange
+
+stPlatinum (SPLT) Token Address \
+`0x15adbd1748E4a9dB99675627E722bD4e8467588F`
+
+stGold (SGLD) Token Address \
+`0xEeF1A441a4743BCac4b1e886394a43e3E8ab5D97`
+
+stSilver (SSLV) Token Address \
+`0x8dFEE3E80E420439d5dFf23265FF9F2944d673CF`
+
+
+
+
+
+
 ## Available scripts
 
 ### Linting - `yarn lint`
