@@ -28,22 +28,22 @@ const Market: NextPageWithLayout = () => {
   //   toggleLoadingState();
   // };
 
-  const buyNft = async (nft: any) => {
-    const contract = new ethers.Contract(
-      nftMarketAddress,
-      NFTMarket.abi,
-      signer
-    );
+  // const buyNft = async (nft: any) => {
+  //   const contract = new ethers.Contract(
+  //     nftMarketAddress,
+  //     NFTMarket.abi,
+  //     signer
+  //   );
 
-    /* user will be prompted to pay the asking proces to complete the transaction */
-    const price = ethers.utils.parseUnits(nft.price.toString(), 'ether');
+  //   /* user will be prompted to pay the asking proces to complete the transaction */
+  //   const price = ethers.utils.parseUnits(nft.price.toString(), 'ether');
 
-    const transaction = await contract.createMarketSale(nft.tokenId, {
-      value: price,
-    });
-    await transaction.wait();
-    loadNFTs();
-  };
+  //   const transaction = await contract.createMarketSale(nft.tokenId, {
+  //     value: price,
+  //   });
+  //   await transaction.wait();
+  //   loadNFTs();
+  // };
 
   return (
     <div>

@@ -24,13 +24,15 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout || ((page: NextPageWithLayout) => page);
 
   return (
-    <Provider store={store}>
+    // <Provider store={store}>
+    <>
       <Header />
       <main className="main-wrapper">
         {getLayout(<Component {...pageProps} />)}
       </main>
       <Footer />
-    </Provider>
+    </>
+    // </Provider>
   );
 }
 

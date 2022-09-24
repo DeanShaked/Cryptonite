@@ -1,10 +1,19 @@
 import React from 'react';
-import { MarketLayout } from '../../../components/layout/Market/MarketLayout';
+import MarketLayout from '../../../components/layout/Market/MarketLayout';
+import SidebarLayout from '../../../components/layout/Sidebar/SidebarLayout';
+import { NextPageWithLayout } from '../../page';
 
-const Dashboard = () => {
+const Dashboard: NextPageWithLayout = () => {
   return <div>Dashboard</div>;
 };
 
-Dashboard.PageLayout = MarketLayout;
+Dashboard.getLayout = (page: NextPageWithLayout) => {
+  return (
+    <MarketLayout>
+      <SidebarLayout />
+      {page}
+    </MarketLayout>
+  );
+};
 
 export default Dashboard;

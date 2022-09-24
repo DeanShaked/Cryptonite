@@ -15,17 +15,20 @@ import Web3Modal from 'web3modal';
 
 /* ---------------- IMPORTS END ---------------- */
 
-// Providers
-const readOnlyProvider = new ethers.providers.JsonRpcProvider();
+// read-only provider
+const web3Provider = new ethers.providers.Web3Provider(window?.ethereum);
+
+// read-write provider
+const rpcProvider = new ethers.providers.JsonRpcProvider();
 
 /* needs the user to sign the transaction, so will use Web3Provider and sign it */
 
 // Smart contracts
-const nftContract = new ethers.Contract(nftAddress, NFT.abi, provider);
+const nftContract = new ethers.Contract(nftAddress, NFT.abi, rpcProvider);
 const marketContract = new ethers.Contract(
   nftMarketAddress,
   NFTMarket.abi,
-  provider
+  rpcProvider
 );
 
 /**
