@@ -1,7 +1,7 @@
 import React from 'react';
-import MarketLayout from '../../../components/layout/Market/MarketLayout';
-import SidebarLayout from '../../../components/layout/Sidebar/SidebarLayout';
-import { NextPageWithLayout } from '../../page';
+import MarketLayout from '../../../../pages/market/layout';
+import MarketNavbar from '../../../MarketNavbar/MarketNavbar';
+import { NextPageWithLayout } from '../../../../pages/page';
 
 const CreateNFT: NextPageWithLayout = () => {
   return <div>CreateNFT</div>;
@@ -10,7 +10,7 @@ const CreateNFT: NextPageWithLayout = () => {
 CreateNFT.getLayout = (page: NextPageWithLayout) => {
   return (
     <MarketLayout>
-      <SidebarLayout />
+      <MarketNavbar />
       {page}
     </MarketLayout>
   );

@@ -1,7 +1,10 @@
+// App
+import { useDappConfig } from '../lib/config';
+import { Mainnet, DAppProvider } from '@usedapp/core';
+
 // Redux
 import { store } from '../store/store';
 import { Provider } from 'react-redux';
-
 // Components
 import Header from '../components/reusable/Header/Header';
 import Footer from '../components/reusable/Footer/Footer';
@@ -17,16 +20,18 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout || ((page: NextPageWithLayout) => page);
 
   return (
-    <Provider store={store}>
-      <div className="flex flex-col bg-site-black ">
-        <Header />
+    <DAppProvider config={useDappConfig}>
+      <Provider store={store}>
+        <div className="flex flex-col bg-site-black">
+          <Header />
 
-        <main className="main-wrapper">
-          {getLayout(<Component {...pageProps} />)}
-        </main>
-        <Footer />
-      </div>
-    </Provider>
+          <main className="flex flex-col">
+            {getLayout(<Component {...pageProps} />)}
+          </main>
+          <Footer />
+        </div>
+      </Provider>
+    </DAppProvider>
   );
 }
 

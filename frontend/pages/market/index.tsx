@@ -13,11 +13,11 @@ import NFTMarket from '../../artifacts/contracts/NFTMarket/NFTMarket.sol/NFTMark
 import { nftAddress, nftMarketAddress } from '../../lib/config';
 
 // Components
-import { NextPageWithLayout } from '../page';
+import MarketNavbar from '../../components/MarketNavbar/MarketNavbar';
 
 // Layout
-import MarketLayout from '../../components/layout/Market/MarketLayout';
-import SidebarLayout from '../../components/layout/Sidebar/SidebarLayout';
+import MarketLayout from './layout';
+import { NextPageWithLayout } from '../page';
 
 const Market: NextPageWithLayout = () => {
   // const unsoldNfts = useSelector((state) => state.marketSlice?.unsoldNfts);
@@ -55,7 +55,7 @@ const Market: NextPageWithLayout = () => {
 Market.getLayout = (page: NextPageWithLayout) => {
   return (
     <MarketLayout>
-      <SidebarLayout />
+      <MarketNavbar />
       {page}
     </MarketLayout>
   );

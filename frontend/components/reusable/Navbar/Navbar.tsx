@@ -19,7 +19,7 @@ const Navbar: React.FC<INavbar> = ({ items }) => {
         return (
           <Link key={item.id} href={item.href}>
             <a
-              className="flex flex-row text-dim-white font-medium first:ml-2 last:mr-2 mx-4 "
+              className="flex flex-row text-dim-white font-medium first:ml-2 last:mr-2 mx-4 hover:scale-110 duration-200"
               title={item.title}
             >
               {item.value}
