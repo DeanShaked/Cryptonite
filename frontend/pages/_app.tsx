@@ -1,6 +1,6 @@
 // App
+import { DAppProvider } from '@usedapp/core';
 import { useDappConfig } from '../lib/config';
-import { Mainnet, DAppProvider } from '@usedapp/core';
 
 // Redux
 import { store } from '../store/store';
