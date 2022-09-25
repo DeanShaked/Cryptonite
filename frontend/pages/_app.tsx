@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         <div className="flex flex-col bg-site-black">
           <Header />
 
-          <main className="flex flex-col">
+          <main className="flex flex-col h-screen">
             {getLayout(<Component {...pageProps} />)}
           </main>
           <Footer />
