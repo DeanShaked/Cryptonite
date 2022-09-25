@@ -1,10 +1,23 @@
+// App
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 // Web 3.0
 import { useEthers } from '@usedapp/core';
+import { updateAccount } from '../../../store/slices/userSlice';
 
 export interface IConnectWallet {}
 
 const ConnectWallet: React.FC<IConnectWallet> = () => {
-  const { activateBrowserWallet, account } = useEthers();
+  const { activateBrowserWallet, account, deactivate } = useEthers();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (account) {
+      dispatch(updateAccount(account));
+    }
+  }, [account]);
 
   return (
     <div>
@@ -14,6 +27,7 @@ const ConnectWallet: React.FC<IConnectWallet> = () => {
       >
         <p>{account ? account : 'Connect Wallet'}</p>
       </button>
+      <button onClick={() => deactivate()}>Logout</button>
     </div>
   );
 };
