@@ -28,12 +28,16 @@ export const usePools = () => {
   };
 
   useEffect(() => {
-    loadPools(readOnlyUrls[readOnlyChainId]).then((pools) => {
-      setPools(pools);
+    async () => {
+      const pools = await loadPools(readOnlyUrls[readOnlyChainId]);
 
-      setLoading(false);
-    });
-  }, [readOnlyUrls, readOnlyChainId]);
+      console.log('pools', pools);
+      if (pools) {
+        setPools(pools);
+        setLoading(false);
+      }
+    };
+  }, []);
 
   return [loading, pools];
 };

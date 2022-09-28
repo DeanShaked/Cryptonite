@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Contract } from '@ethersproject/contracts';
-import { abis } from '@my-app/contracts';
+import { abis } from '../../../contracts';
 import {
   ERC20,
   useContractFunction,
@@ -11,9 +11,11 @@ import {
 import { ethers } from 'ethers';
 import { parseUnits } from 'ethers/lib/utils';
 
-export interface ISwapper {}
+export interface ISwapper {
+  pools: {};
+}
 
-const Swapper: React.FC<ISwapper> = () => {
+const Swapper: React.FC<ISwapper> = ({ pools }) => {
   return <div></div>;
 };
 

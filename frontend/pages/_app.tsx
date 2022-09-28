@@ -20,18 +20,20 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout || ((page: NextPageWithLayout) => page);
 
   return (
-    <DAppProvider config={DAPP_CONFIG}>
-      <Provider store={store}>
-        <div className="flex flex-col bg-site-black">
-          <Header />
+    <>
+      <DAppProvider config={DAPP_CONFIG}>
+        <Provider store={store}>
+          <div className="flex flex-col bg-site-black">
+            <Header />
 
-          <main className="flex flex-col h-screen">
-            {getLayout(<Component {...pageProps} />)}
-          </main>
-          <Footer />
-        </div>
-      </Provider>
-    </DAppProvider>
+            <main className="flex flex-col h-screen">
+              {getLayout(<Component {...pageProps} />)}
+            </main>
+            <Footer />
+          </div>
+        </Provider>
+      </DAppProvider>
+    </>
   );
 }
 

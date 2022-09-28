@@ -4,12 +4,13 @@ import { NextPageWithLayout } from '../page';
 import { useEthers } from '@usedapp/core';
 import Swapper from '../../components/layout/Exchange/Swapper';
 import ExchangeLoader from '../../components/reusable/ExchangeLoader/ExchangeLoader';
+import { usePools } from '../../hooks/usePools';
 
 const Exchange = () => {
   const { account } = useEthers();
-  // const [poolsLoading, pools] = usePools();
+  const [poolsLoading, pools] = usePools();
 
-  const poolsLoading = false;
+  // const poolsLoading = false;
 
   return (
     <div className="flex-1 flex justify-start items-center flex-col w-full mt-10">
@@ -27,7 +28,7 @@ const Exchange = () => {
               poolsLoading ? (
                 <ExchangeLoader title="Loading pools, please wait!" />
               ) : (
-                <Swapper />
+                <Swapper pools={pools} />
               )
             ) : (
               <ExchangeLoader title="Please connect your wallet" />
