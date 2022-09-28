@@ -1,6 +1,6 @@
 // App
 import { DAppProvider } from '@usedapp/core';
-import { useDappConfig } from '../lib/config';
+import { DAPP_CONFIG } from '../lib/config';
 
 // Redux
 import { store } from '../store/store';
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout || ((page: NextPageWithLayout) => page);
 
   return (
-    <DAppProvider config={useDappConfig}>
+    <DAppProvider config={DAPP_CONFIG}>
       <Provider store={store}>
         <div className="flex flex-col bg-site-black">
           <Header />
