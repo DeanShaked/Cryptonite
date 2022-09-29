@@ -123,8 +123,21 @@ Enable Commitlint via Husky
 npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 ```
 
-
 ## Exchange
+
+### Contract Address
+
+`0x358AA72F4c599f9C6Ba2D99765E0074EFeC3E4fE`
+
+### Contract Owner Address
+
+`0xf9db4Af633Ff9E833E20417f0219BEB295a2B867`
+
+### Contract Creation Tx Address
+
+`0xbab6049e07b6a61de5d98d6a0ed83de5f4dffff8d3d46bfb0f45bae115d72ab4`
+
+### Pairs (markets)
 
 stPlatinum (SPLT) Token Address \
 `0x15adbd1748E4a9dB99675627E722bD4e8467588F`
@@ -134,11 +147,6 @@ stGold (SGLD) Token Address \
 
 stSilver (SSLV) Token Address \
 `0x8dFEE3E80E420439d5dFf23265FF9F2944d673CF`
-
-
-
-
-
 
 ## Available scripts
 
