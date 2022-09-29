@@ -28,17 +28,16 @@ export const usePools = () => {
     return factoryInfo.pairsInfo;
   };
 
-  useEffect(() => {
-    const response = async () => {
-      const pools = await loadPools(readOnlyUrls[readOnlyChainId]);
-      console.log('pools', pools);
-      if (pools) {
-        setPools(pools);
-        setLoading(false);
-      }
-    };
+  const fetchPools = async () => {
+    const pools = await loadPools(readOnlyUrls[readOnlyChainId]);
+    if (pools) {
+      setPools(pools);
+      setLoading(false);
+    }
+  };
 
-    response();
+  useEffect(() => {
+    fetchPools();
   }, [readOnlyChainId, readOnlyUrls]);
 
   return [loading, pools];
