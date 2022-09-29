@@ -24,23 +24,21 @@ export const usePools = () => {
     const web3 = new Web3(provider);
     const routerInfo = await getRouterInfo(routerAddress, web3);
     const factoryInfo = await getFactoryInfo(routerInfo.factory, web3);
+
     return factoryInfo.pairsInfo;
   };
 
   useEffect(() => {
-    const asyncAnswer = async () => {
+    const response = async () => {
       const pools = await loadPools(readOnlyUrls[readOnlyChainId]);
-    };
-
-    asyncAnswer()
-      .then((pools) => {})
-      .catch(console.error);
-    async () => {
+      console.log('pools', pools);
       if (pools) {
         setPools(pools);
         setLoading(false);
       }
     };
+
+    response();
   }, [readOnlyChainId, readOnlyUrls]);
 
   return [loading, pools];
