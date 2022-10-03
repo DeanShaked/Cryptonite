@@ -1,10 +1,14 @@
-import { Contract } from '@ethersproject/contracts';
-import { abis } from '../artifacts/contracts/Exchange/';
-import { useCall } from '@usedapp/core';
-import { parseUnits } from 'ethers/lib/utils';
+// App
 import { useEffect } from 'react';
 
+// Contract
+import { Contract } from '@ethersproject/contracts';
+import  abis from '../contracts/abis';
+
+import { useCall } from '@usedapp/core';
+import { parseUnits } from 'ethers/lib/utils';
 import { routerAddress } from './config';
+
 
 export const getAvailableTokens = (pools) =>
   pools.reduce((prev, curr) => {
@@ -12,6 +16,7 @@ export const getAvailableTokens = (pools) =>
     prev[curr.token1Address] = curr.token1Name;
     return prev;
   }, {});
+  
 
 export const getCounterpartTokens = (pools, fromToken) =>
   pools

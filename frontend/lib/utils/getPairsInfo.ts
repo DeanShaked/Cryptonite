@@ -1,4 +1,5 @@
-import { abis } from '../../contracts';
+ 
+  import { abis } from '../../contracts';
 
 /**
  * getPairsInfo
