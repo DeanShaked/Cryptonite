@@ -27,7 +27,7 @@ const Exchange: NextPageWithLayout = () => {
         <div className="relative md:max-w-[700px] md:min-w-[500px] min-w-full max-w-full gradient-border p-[2px] rounded-3xl">
           <div className="pink_gradient" />
           <div className="w-full min-h-[400px] bg-site-black backdrop-blur-[4px] rounded-3xl shadow-card flex p-10">
-            {/* {account ? (
+            {account ? (
               poolsLoading ? (
                 <ExchangeLoader title="Loading pools, please wait!" />
               ) : (
@@ -35,9 +35,7 @@ const Exchange: NextPageWithLayout = () => {
               )
             ) : (
               <ExchangeLoader title="Please connect your wallet" />
-            )} */}
-
-            <Swapper pools={pools} />
+            )}
           </div>
           <div className="blue_gradient" />
           <div />

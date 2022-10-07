@@ -26,16 +26,22 @@ export interface ISwapper {
 }
 
 const Swapper: React.FC<ISwapper> = ({ pools }) => {
-  const { account } = useEthers();
+  // const { account } = useEthers();
 
   const isApproving = isOperationPending('approved'); // TODO
   const isSwapping = isOperationPending('swap'); // TODO
+
+  // Place holders
+  const canApprove = true;
+  const canSwap = false;
+  const approveNeeded = false;
+  const hasEnoughBalance = false;
 
   const successMessage = getSuccessMessage(); // TODO
   const failureMessage = getFailureMessage(); // TODO
 
   // Router Contract Instance
-  const routerContract = new Contract(routerAddress, abis.router02);
+  // const routerContract = new Contract(routerAddress, abis.router02);
 
   return (
     <div className="flex flex-col w-full items-center">
@@ -47,6 +53,45 @@ const Swapper: React.FC<ISwapper> = ({ pools }) => {
         <AmountOut />
         <Balance />
       </div>
+      {approveNeeded && !isSwapping ? (
+        <button
+          onClick={() => {}}
+          disabled={!canApprove}
+          className={`border-none outline-none px-6 py-2 font-poppins font-bold text-lg rounded-2xl leading-[24px] transition-all min-h-[56px] ${
+            canApprove
+              ? 'bg-site-pink text-white '
+              : 'bg-site-dim2 text-site-dim2'
+          }`}
+        >
+          {isApproving ? 'Approving...' : 'Approve'}
+        </button>
+      ) : (
+        <button
+          onClick={() => {}}
+          disabled={!canSwap}
+          className={`border-none outline-none px-6 py-2 font-poppins font-bold text-lg rounded-2xl leading-[24px] transition-all min-h-[56px] ${
+            canSwap ? 'bg-site-pink text-white ' : 'bg-site-dim2 text-site-dim2'
+          }`}
+        >
+          {isSwapping
+            ? 'Swapping...'
+            : hasEnoughBalance
+            ? 'Swap'
+            : 'Insufficient balance'}
+        </button>
+      )}
+
+      {failureMessage && !resetState ? (
+        <p className="font-poppins font-lg text-white font-bold mt-7">
+          {failureMessage}
+        </p>
+      ) : successMessage ? (
+        <p className="font-poppins font-lg text-white font-bold mt-7">
+          {successMessage}
+        </p>
+      ) : (
+        ''
+      )}
     </div>
   );
 };
