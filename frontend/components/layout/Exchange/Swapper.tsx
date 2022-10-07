@@ -16,6 +16,9 @@ import AmountIn from './AmountIn';
 import Balance from './Balance';
 import AmountOut from './AmountOut';
 import {
+  findPoolByTokens,
+  getAvailableTokens,
+  getCounterpartTokens,
   getFailureMessage,
   getSuccessMessage,
   isOperationPending,
@@ -26,22 +29,55 @@ export interface ISwapper {
 }
 
 const Swapper: React.FC<ISwapper> = ({ pools }) => {
-  // const { account } = useEthers();
+  const { account } = useEthers();
+
+  const [fromValue, setFromValue] = useState('0');
+  const [fromToken, setFromToken] = useState(pools[0].tokenAddress);
+
+  const [toToken, setToToken] = useState('');
+  const [resetState, setResetState] = useState(false);
 
   const isApproving = isOperationPending('approved'); // TODO
   const isSwapping = isOperationPending('swap'); // TODO
 
+  // format to BigNumber
+  const fromValueBigNumber = parseUnits(fromValue);
+
+  // available tokens in the liquidity pools
+  const availableTokens = getAvailableTokens(pools);
+
+  // convertable counterpart tokens
+  const counterpartTokens = getCounterpartTokens(pools, fromToken);
+
+  // find pair address for the swap
+  const pairAddress =
+    findPoolByTokens(pools, fromToken, toToken)?.address ?? '';
+
   // Place holders
   const canApprove = true;
   const canSwap = false;
-  const approveNeeded = false;
-  const hasEnoughBalance = false;
 
   const successMessage = getSuccessMessage(); // TODO
   const failureMessage = getFailureMessage(); // TODO
 
-  // Router Contract Instance
-  // const routerContract = new Contract(routerAddress, abis.router02);
+  // router contract instance
+  const routerContract = new Contract(routerAddress, abis.router02);
+
+  // fromToken contract instance
+  const fromTokenContract = new Contract(fromToken, ERC20.abi);
+
+  // fetch swapping tokens balances
+  const fromTokenBalance = useTokenBalance(fromToken, account);
+  const toTokenBalance = useTokenBalance(toToken, account);
+
+  const tokenAllowance =
+    useTokenAllowance(fromToken, account, routerAddress) || parseUnits('0');
+
+  const approveNeeded = fromValueBigNumber.gt(tokenAllowance);
+
+  const fromValueIsGreatThan0 = fromValueBigNumber.gt(parseUnits('0'));
+
+  const hasEnoughBalance = fromValueBigNumber.lte(fromTokenBalance);
 
   return (
     <div className="flex flex-col w-full items-center">
