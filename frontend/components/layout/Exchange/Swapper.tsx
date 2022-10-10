@@ -50,13 +50,6 @@ const Swapper: React.FC<ISwapper> = ({ pools }) => {
   const pairAddress =
     findPoolByTokens(pools, fromToken, toToken)?.address ?? '';
 
-  // Place holders
-  const canApprove = true;
-  const canSwap = false;
-
-  const successMessage = getSuccessMessage(); // TODO
-  const failureMessage = getFailureMessage(); // TODO
-
   // router contract instance
   const routerContract = new Contract(routerAddress, abis.router02);
 
@@ -94,8 +87,49 @@ const Swapper: React.FC<ISwapper> = ({ pools }) => {
       gasLimitBufferPercentage: 10,
     });
 
+  // Swap state status
   const isSwapping = isOperationPending(swapExecuteState);
   const isApproving = isOperationPending(swapApproveState);
+
+  // Swap state validation
+  const canApprove = !isApproving && approveNeeded;
+  const canSwap =
+    !approveNeeded && !isSwapping && fromValueIsGreatThan0 && hasEnoughBalance;
+
+  // Swap state messages
+  const successMessage = getSuccessMessage(swapApproveState, swapExecuteState);
+  const failureMessage = getFailureMessage(swapApproveState, swapExecuteState);
+
+  // Logic of swapper
+  const onApproveRequested = () => {
+    swapApproveSend(routerAddress, ethers.constants.MaxInt256);
+  };
+
+  const onSwapRequested = async () => {
+    swapExecuteSend(
+      fromValueBigNumber,
+      0,
+      [fromToken, toToken],
+      account,
+      Math.floor(Date.now() / 1000) + 60 * 2
+    ).then(() => {
+      setFromValue('0');
+    });
+  };
+
+  // Handle user input func
+  const onFromValueChanged = (value) => {
+    const trimmedValue = value.trim();
+
+    try {
+      if (trimmedValue) {
+        parseUnits(value);
+        setFromValue(value);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="flex flex-col w-full items-center">
