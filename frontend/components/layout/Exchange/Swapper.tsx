@@ -37,9 +37,6 @@ const Swapper: React.FC<ISwapper> = ({ pools }) => {
   const [toToken, setToToken] = useState('');
   const [resetState, setResetState] = useState(false);
 
-  const isApproving = isOperationPending('approved'); // TODO
-  const isSwapping = isOperationPending('swap'); // TODO
-
   // format to BigNumber
   const fromValueBigNumber = parseUnits(fromValue);
 
@@ -77,7 +74,28 @@ const Swapper: React.FC<ISwapper> = ({ pools }) => {
 
   const fromValueIsGreatThan0 = fromValueBigNumber.gt(parseUnits('0'));
 
-  const hasEnoughBalance = fromValueBigNumber.lte(fromTokenBalance);
+  const hasEnoughBalance = fromValueBigNumber.lte(
+    fromTokenBalance ?? parseUnits('0')
+  );
+
+  /* Swapping Functions */
+
+  // Approve swap transaction
+  const { state: swapApproveState, send: swapApproveSend } =
+    useContractFunction(fromTokenContract, 'approve', {
+      transactionName: 'onApproveRequested',
+      gasLimitBufferPercentage: 10,
+    });
+
+  // Execute swap transaction
+  const { state: swapExecuteState, send: swapExecuteSend } =
+    useContractFunction(routerContract, 'swapExactTokensForTokens', {
+      transactionName: 'swapExactTokensForTokens',
+      gasLimitBufferPercentage: 10,
+    });
+
+  const isSwapping = isOperationPending(swapExecuteState);
+  const isApproving = isOperationPending(swapApproveState);
 
   return (
     <div className="flex flex-col w-full items-center">
