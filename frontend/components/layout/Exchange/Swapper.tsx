@@ -120,7 +120,6 @@ const Swapper: React.FC<ISwapper> = ({ pools }) => {
   // Handle user input func
   const onFromValueChanged = (value) => {
     const trimmedValue = value.trim();
-
     try {
       if (trimmedValue) {
         parseUnits(value);
@@ -131,6 +130,7 @@ const Swapper: React.FC<ISwapper> = ({ pools }) => {
     }
   };
 
+  const onFromTokenChange = (value) => {};
   return (
     <div className="flex flex-col w-full items-center">
       <div className="mb-8">
