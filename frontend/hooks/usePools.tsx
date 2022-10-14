@@ -11,7 +11,7 @@ import { getFactoryInfo } from '../lib/utils/getFactoryInfo';
  *  @note that this is a readOnly hook,
  *        Therefore using a readOnlyNodeProvider
  *        which can be deconstructed from useConfig.
- *  @returns an array of the pool's state.
+ *  @returns an array of the pools and the loading state of the pools.
  */
 
 export const usePools = () => {
@@ -36,6 +36,7 @@ export const usePools = () => {
     }
   };
 
+  // refetch pools if chainId is changed
   useEffect(() => {
     fetchPools();
   }, [readOnlyChainId, readOnlyUrls]);
